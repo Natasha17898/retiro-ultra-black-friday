@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retiro Ultra Black Friday</title>
+<style>
+  :root{
+    --pink:#ff1a7a;
+    --pink2:#ff5fa8;
+    --orange:#ff8a3d;
+    --lime:#d6ff3d;
+    --lime2:#a6e646;
+    --bg:#000000;
+    --card:#151515;
+    --card-border:#262626;
+    --text:#f5f5f5;
+    --muted:#c2c2c2;
+    --grad: linear-gradient(90deg, var(--pink) 0%, var(--orange) 55%, var(--lime) 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Helvetica Neue", Arial, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{
+    text-align:center;
+    padding:90px 24px 70px;
+  }
+  .badge{
+    display:inline-block;
+    background:var(--grad);
+    color:#0a0a0a;
+    font-weight:800;
+    font-style:italic;
+    letter-spacing:1px;
+    font-size:18px;
+    padding:10px 28px;
+    clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+    margin-bottom:28px;
+  }
+  .hero h1{
+    font-size:clamp(48px, 9vw, 92px);
+    font-weight:800;
+    letter-spacing:-1px;
+    color:#fff;
+  }
+  .hero .meta{
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .date-big{
+    font-size:clamp(24px, 3.6vw, 32px);
+    font-weight:800;
+    color:#fff;
+    letter-spacing:-0.5px;
+  }
+  .time-big{
+    font-size:clamp(20px, 3.4vw, 28px);
+    font-weight:800;
+    color:#fff;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .time-big .tz{
+    font-size:inherit;
+    font-weight:inherit;
+    color:inherit;
+  }
+
+  /* OBJECTIVE */
+  .obj-copy{max-width:700px; margin-bottom:24px;}
+  .obj-copy p{
+    color:var(--muted);
+    font-size:19px;
+    margin-bottom:16px;
+  }
+  .obj-copy p:last-child{margin-bottom:0;}
+  .obj-lead{
+    color:#fff;
+    font-weight:700;
+    font-size:19px;
+    margin-bottom:18px;
+  }
+  .proof-grid{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    margin-top:26px;
+  }
+  .proof-grid .proof-item{
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .proof-grid .proof-item:last-child{
+    margin:0 auto;
+  }
+  .proof-grid img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .proof-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:640px){
+    .proof-row{grid-template-columns:1fr;}
+  }
+  .proof-caption{
+    margin-top:22px;
+    font-size:19px;
+    font-weight:700;
+    color:#fff;
+    text-align:center;
+  }
+  .objective-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+    margin-top:8px;
+  }
+  .obj-card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:14px;
+    padding:20px;
+  }
+  .obj-title{
+    font-size:18px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:8px;
+  }
+  .obj-text{
+    font-size:16px;
+    color:var(--muted);
+  }
+  @media (max-width:640px){
+    .objective-grid{grid-template-columns:1fr;}
+  }
+
+  /* SECTION HEADERS */
+  .section{padding:60px 0;}
+  .section-title{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:var(--lime);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .section h2{
+    font-size:clamp(30px, 4.2vw, 42px);
+    font-weight:800;
+    color:#fff;
+    margin-bottom:14px;
+  }
+  .section .desc{
+    color:var(--muted);
+    font-size:19px;
+    max-width:700px;
+    margin-bottom:40px;
+  }
+
+  /* ULTRA RETIRO TIMELINE */
+  .timeline{
+    position:relative;
+    padding-left:28px;
+    border-left:2px solid var(--card-border);
+  }
+  .t-item{
+    position:relative;
+    padding-bottom:34px;
+  }
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";
+    position:absolute;
+    left:-34px;
+    top:4px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--pink);
+  }
+  .t-item .t-title{
+    font-size:21px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:4px;
+  }
+  .t-item .t-speaker{
+    font-size:16px;
+    color:var(--muted);
+  }
+  .t-item .t-speaker::before{
+    content:"— ";
+  }
+
+  /* ZOOM CARDS */
+  .zoom-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .zoom-card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .zoom-date{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:20px 24px;
+    background:linear-gradient(90deg, rgba(255,26,122,0.14), rgba(255,95,168,0.06));
+  }
+  .zoom-date .num{
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+  }
+  .zoom-date .label{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--lime);
+    font-weight:700;
+  }
+  .zoom-audience{
+    padding:14px 24px;
+    font-size:15px;
+    color:var(--muted);
+    border-bottom:1px solid var(--card-border);
+  }
+  .zoom-audience strong{
+    color:#fff;
+    font-weight:700;
+  }
+  .zoom-body{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .zoom-period{
+    padding:22px 24px;
+  }
+  .zoom-period + .zoom-period{
+    border-left:1px solid var(--card-border);
+  }
+  .period-tag{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:6px;
+    display:inline-block;
+    margin-bottom:12px;
+  }
+  .period-tag.manha{
+    background:none;
+    padding:4px 0;
+    color:var(--lime);
+  }
+  .period-tag.tarde{
+    background:none;
+    padding:4px 0;
+    color:var(--lime2);
+  }
+  .zoom-period ul{
+    list-style:none;
+  }
+  .zoom-period li{
+    font-size:17px;
+    color:var(--text);
+    padding-left:16px;
+    position:relative;
+    margin-bottom:10px;
+  }
+  .zoom-period li:last-child{margin-bottom:0;}
+  .zoom-period li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:8px;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--pink);
+  }
+  .zoom-period.tarde li{color:var(--muted);}
+  .zoom-period.tarde li::before{background:var(--pink2);}
+
+  @media (max-width:600px){
+    .zoom-body{grid-template-columns:1fr;}
+    .zoom-period + .zoom-period{border-left:none;border-top:1px solid var(--card-border);}
+  }
+
+  .footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    padding-top:60px;
+  }
+
+  hr.div{
+    border:none;
+    height:1px;
+    background:var(--card-border);
+    margin:0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="badge">RETIRO ULTRA</div>
+    <h1>Black Friday</h1>
+    <div class="meta">
+      <div class="date-big">28/08</div>
+      <div class="time-big">10h <span class="tz">horário de Brasília</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <hr class="div">
+
+    <div class="section">
+      <div class="section-title">Objetivo do Ultra Retiro</div>
+      <h2>A estratégia da sua Black Friday pronta em um dia</h2>
+      <div class="obj-copy">
+        <p>O objetivo aqui é simples: fazer você alcançar o maior faturamento na melhor época do ano para vender.</p>
+        <p>E claro que para ensinar o passo a passo para você nós escolhemos os melhores especialistas no assunto para falar sobre oferta, conteúdo, tráfego e recuperação de vendas.</p>
+      </div>
+      <p class="obj-lead">Você vai ver:</p>
+      <div class="objective-grid">
+        <div class="obj-card">
+          <div class="obj-title">Estratégia completa</div>
+          <div class="obj-text">Do posicionamento da oferta à recuperação de carrinho, sem pular etapa.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-title">Com especialistas em Black</div>
+          <div class="obj-text">Além do Leandro Ladeira, teremos o Gabriel Vilas Boas, Samuel Florêncio e Raphael Archangelum, ao vivo.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-title">Mão na massa</div>
+          <div class="obj-text">Você implementa as estratégias no dia e já sai com o plano da sua Black estruturado.</div>
+        </div>
+      </div>
+
+      <p class="obj-lead" style="margin-top:36px;">Resultados de alguns mentorados que participaram do Retiro da Black ano passado:</p>
+      <div class="proof-grid">
+        <div class="proof-item"><img src="resultados/proof-01.png" alt="Resultado de mentorado na Black Friday"></div>
+        <div class="proof-item"><img src="resultados/proof-04.png" alt="Resultado de mentorado na Black Friday"></div>
+        <div class="proof-item"><img src="resultados/proof-08.png" alt="Resultado de mentorado na Black Friday"></div>
+        <div class="proof-item"><img src="resultados/proof-12.png" alt="Resultado de mentorado na Black Friday"></div>
+      </div>
+      <p class="proof-caption">Esse ano quero receber seu print.</p>
+    </div>
+
+    <hr class="div">
+
+    <div class="section">
+      <div class="section-title">Ao vivo · 28/08 às 10h</div>
+      <h2>Cronograma do Retiro Ultra Black Friday</h2>
+      <p class="desc">Um dia inteiro dedicado a preparar sua Black Friday, do zero à execução — oferta, estratégia, conteúdo, tráfego e recuperação de vendas.</p>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-title">Abertura</div>
+          <div class="t-speaker">Leandro Ladeira</div>
+        </div>
+        <div class="t-item">
+          <div class="t-title">Oferta e mote de Black</div>
+          <div class="t-speaker">Leandro Ladeira</div>
+        </div>
+        <div class="t-item">
+          <div class="t-title">Estratégia da Black</div>
+          <div class="t-speaker">Gabriel Vilas Boas</div>
+        </div>
+        <div class="t-item">
+          <div class="t-title">Conteúdo orgânico e aquecimento</div>
+          <div class="t-speaker">Gabriel Vilas Boas</div>
+        </div>
+        <div class="t-item">
+          <div class="t-title">Tráfego para captação de Black</div>
+          <div class="t-speaker">Samuel Florêncio</div>
+        </div>
+        <div class="t-item">
+          <div class="t-title">Remarketing e recuperação de carrinho</div>
+          <div class="t-speaker">Raphael Archangelum</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="section">
+      <div class="section-title">Toda semana</div>
+      <h2>Zooms Exclusivos de Black</h2>
+      <p class="desc">Esse ano vai ser diferente: além do retiro, você vai ter aulas semanais pra te ajudar na implementação. Todo encontro tem conteúdo (aula) + implementação na parte da manhã, e tira-dúvidas sobre o tema do dia à tarde.</p>
+
+      <div class="zoom-grid">
+
+        <div class="zoom-card">
+          <div class="zoom-date"><span class="num">04/09</span></div>
+          <div class="zoom-audience"><strong>Para quem é:</strong> Mentorados que tem apenas produto low ticket e precisam de um produto novo para vender na Black Friday.</div>
+          <div class="zoom-body">
+            <div class="zoom-period manha">
+              <span class="period-tag manha">Manhã · Conteúdo + Implementação</span>
+              <ul>
+                <li>Ideia de produto conecta com o low ticket</li>
+                <li>Concepção do produto</li>
+              </ul>
+            </div>
+            <div class="zoom-period tarde">
+              <span class="period-tag tarde">Tarde · Tira-dúvidas</span>
+              <ul>
+                <li>Tira-dúvidas sobre os temas da manhã</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zoom-card">
+          <div class="zoom-date"><span class="num">11/09</span></div>
+          <div class="zoom-audience"><strong>Para quem é:</strong> Mentorados que criaram o novo produto da Black e precisam preparar o público para comprar na Black Friday.</div>
+          <div class="zoom-body">
+            <div class="zoom-period manha">
+              <span class="period-tag manha">Manhã · Conteúdo + Implementação</span>
+              <ul>
+                <li>Divulgar novo produto da black para alunos</li>
+                <li>Divulgação novo produto da black orgânica</li>
+              </ul>
+            </div>
+            <div class="zoom-period tarde">
+              <span class="period-tag tarde">Tarde · Tira-dúvidas</span>
+              <ul>
+                <li>Tira-dúvidas sobre os temas da manhã</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zoom-card">
+          <div class="zoom-date"><span class="num">18/09</span></div>
+          <div class="zoom-audience"><strong>Para quem é:</strong> Todos os mentorados que já estiverem com o produto mid ticket estruturado; mentorados que já têm produto pronto para vender na Black Friday.</div>
+          <div class="zoom-body">
+            <div class="zoom-period manha">
+              <span class="period-tag manha">Manhã · Conteúdo + Implementação</span>
+              <ul>
+                <li>Oferta e Mote</li>
+                <li>Página de captura e obrigado</li>
+              </ul>
+            </div>
+            <div class="zoom-period tarde">
+              <span class="period-tag tarde">Tarde · Tira-dúvidas</span>
+              <ul>
+                <li>Tira-dúvidas sobre os temas da manhã</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zoom-card">
+          <div class="zoom-date"><span class="num">09/10</span></div>
+          <div class="zoom-audience"><strong>Para quem é:</strong> todos os mentorados que já tiverem com o produto mid ticket estruturado.</div>
+          <div class="zoom-body">
+            <div class="zoom-period manha">
+              <span class="period-tag manha">Manhã · Conteúdo + Implementação</span>
+              <ul>
+                <li>Estrutura de campanha</li>
+                <li>Otimização de campanha</li>
+              </ul>
+            </div>
+            <div class="zoom-period tarde">
+              <span class="period-tag tarde">Tarde · Tira-dúvidas</span>
+              <ul>
+                <li>Tira-dúvidas sobre os temas da manhã</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="section" style="text-align:center;padding:60px 0 20px;">
+      <h2 style="margin-bottom:0;color:var(--pink);">Esperamos você dia 28/08 pra começar a preparar sua Ultra Black Friday.</h2>
+    </div>
+
+    <div class="footer">Mentoria Fluxo · Retiro Ultra Black Friday</div>
+  </div>
+
+</body>
+</html>
